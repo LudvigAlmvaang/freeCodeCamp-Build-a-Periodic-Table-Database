@@ -21,8 +21,8 @@ MAIN() {
 FIND_ATOMIC_NUMBER() {
   GET_ELEMENT=$($PSQL "SELECT elements.atomic_number, elements.name, elements.symbol, types.type, properties.atomic_mass, properties.melting_point_celsius, properties.boiling_point_celsius
                       FROM elements
-                      INNER JOIN properties ON elements.atomic_number = properties.atomic_number INNER
-                      JOIN types ON properties.type_id = types.type_id
+                      INNER JOIN properties ON elements.atomic_number = properties.atomic_number
+                      INNER JOIN types ON properties.type_id = types.type_id
                       WHERE elements.atomic_number = $1")
   if [[ -z $GET_ELEMENT ]]
   then
